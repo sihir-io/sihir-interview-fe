@@ -1,0 +1,77 @@
+'use client'
+
+import 'regenerator-runtime/runtime'
+import {useEffect, useState} from "react";
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import sihirApiClient from "@/helpers/axios";
+import OpenViduSession from "openvidu-react";
+
+
+export default function Home() {
+    const router = useRouter()
+    let pathname = usePathname()
+    const [response, setResponse] = useState(null);
+    useEffect(() => {
+        navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true
+        })
+            .then(function (stream) {
+                console.log(stream)
+            })
+            .catch(function (err0r) {
+                console.error("Something went wrong!");
+            });
+    })
+    const slug = pathname.split('/')[1]
+
+    useEffect(() => {
+        const element = document.getElementById('header_img')
+        if (element) {
+            element.src = 'https://cdn.discordapp.com/attachments/997261989292282007/1120080903260094534/atlas_simple_jappanese_drawing_of_dragon_fitting_white_backgrou_9655a5bc-6b86-4055-b426-77a02656345d.png'
+        }
+        const title = document.getElementById("titleContent");
+        if (title) {
+            title.remove()
+        }
+        //    Get interview_obj from local_storage
+        const interview_obj = localStorage.getItem('interview_obj')
+        if (!interview_obj) {
+            router.push(`/${slug}`)
+        }
+
+        const interview_obj_json = JSON.parse(interview_obj)
+        if (!interview_obj_json || !interview_obj_json.token) {
+            router.push('/error')
+        }
+        setResponse(interview_obj_json)
+    })
+
+    const handleError = () => {
+        router.push('/error')
+    }
+    return (
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <div className={'absolute z-50 bottom-20 text-2xl '}>
+                Question: {response?.token}
+            </div>
+            <OpenViduSession
+                id="opv-session"
+                sessionName={response?.id_ref}
+                user={'User'}
+                token={'wss://stream.sihir.io?sessionId=6ac0bb49-3824-462c-8e87-452adeecc6d5&token=tok_Y1lMPmdaI7m9awjJ'}
+                joinSession={
+                    () => {
+                        localStorage.removeItem('interview_obj')
+                    }
+                }
+                leaveSession={() => {
+                    router.back(`/error`)
+                    setResponse(null)
+                }}
+                error={handleError}
+            />
+
+        </main>
+    )
+}

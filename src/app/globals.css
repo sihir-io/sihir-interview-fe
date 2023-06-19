@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+#titleContent{
+  @apply max-w-2xl mx-auto;
+  max-width: 300px;
+}
