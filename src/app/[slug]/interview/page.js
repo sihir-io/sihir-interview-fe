@@ -46,26 +46,36 @@ export default function Home() {
         }
         setResponse(interview_obj_json)
     })
-
+    if (!response || !response.token) {
+        return (
+            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+                <h1>
+                    Loading...
+                </h1>
+            </main>
+        )
+    }
     const handleError = () => {
         router.push('/error')
     }
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className={'absolute z-50 bottom-20 text-2xl '}>
-                Question: {response?.token}
+                Question: {response.question}
             </div>
             <OpenViduSession
                 id="opv-session"
-                sessionName={response?.id_ref}
+                sessionName={''}
                 user={'User'}
-                token={'wss://stream.sihir.io?sessionId=6ac0bb49-3824-462c-8e87-452adeecc6d5&token=tok_Y1lMPmdaI7m9awjJ'}
-                joinSession={
-                    () => {
+                token={response.token}
+                joinSession={() => {
+                    if (response) {
                         localStorage.removeItem('interview_obj')
                     }
                 }
+                }
                 leaveSession={() => {
+                    console.log('leaveSession')
                     router.back(`/error`)
                     setResponse(null)
                 }}
