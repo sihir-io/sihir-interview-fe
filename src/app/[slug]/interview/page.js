@@ -2,8 +2,7 @@
 
 import 'regenerator-runtime/runtime'
 import {useEffect, useState} from "react";
-import {usePathname, useRouter, useSearchParams} from 'next/navigation'
-import sihirApiClient from "@/helpers/axios";
+import {usePathname, useRouter} from 'next/navigation'
 import OpenViduSession from "openvidu-react";
 
 
