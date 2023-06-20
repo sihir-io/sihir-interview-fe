@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: sihircontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_280ba82702854943969d3e10640a9e13 }}/sihirterview:${{ github.sha }}
+        tags: sihircontainerregistry.azurecr.io/sihirterview:latest
         file: ./Dockerfile
 
   deploy:
