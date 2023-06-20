@@ -25,7 +25,7 @@ export default function Home() {
         <main className="flex min-h-screen flex-col items-center p-24 bg-white text-black justify-around">
             <div>
                 <h1>
-                    Welcome to Sihir Interview, {'Anaci'}
+                    Welcome to Sihir Interview,
                 </h1>
                 <p>
                     Please press on Start button to start the interview.
@@ -57,7 +57,7 @@ export default function Home() {
                                         //    set async storage
                                         else {
                                             localStorage.setItem('interview_obj', JSON.stringify(data))
-                                            router.push(`/${slug}/interview`)
+                                            router.push(`/${slug}/interview/${data.id_ref}`)
                                         }
                                     }
                                 ).catch((err) => {
