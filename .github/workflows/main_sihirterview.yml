@@ -32,20 +32,20 @@ jobs:
         push: true
         tags: sihircontainerregistry.azurecr.io/sihirterview:latest
         file: ./Dockerfile
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-    - name: Deploy to Azure Web App
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'sihirterview'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_66c8fdf013e345198f67173c8b5bf27d }}
-        images: 'sihircontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_280ba82702854943969d3e10640a9e13 }}/sihirterview:${{ github.sha }}'
+#
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: build
+#    environment:
+#      name: 'production'
+#      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+#
+#    steps:
+#    - name: Deploy to Azure Web App
+#      id: deploy-to-webapp
+#      uses: azure/webapps-deploy@v2
+#      with:
+#        app-name: 'sihirterview'
+#        slot-name: 'production'
+#        publish-profile: ${{ secrets.AzureAppService_PublishProfile_66c8fdf013e345198f67173c8b5bf27d }}
+#        images: 'sihircontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_280ba82702854943969d3e10640a9e13 }}/sihirterview:${{ github.sha }}'
