@@ -34,7 +34,7 @@ export default function Home() {
                     </h1>
                     <p className={'text-sm pt-24'
                     }>
-                        Firstly, please enter the email you've recieved the invitation to verify your identity.
+                        Firstly, please enter the email you have received the invitation to verify your identity.
                     </p>
                 </div>
                 <div className={'flex flex-col items-center justify-center'}>
