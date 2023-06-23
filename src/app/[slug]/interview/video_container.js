@@ -55,6 +55,7 @@ export default function VideoContainer({token, question, status, slug}) {
                 }
                 }
                 leaveSession={() => {
+                    router.push(`/${slug}`)
                 }}
                 error={handleError}
             />
