@@ -22,7 +22,7 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
 
-    })
+    }, [])
 
     if (!isValid) {
         return (
