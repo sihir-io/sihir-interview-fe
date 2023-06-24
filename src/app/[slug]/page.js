@@ -32,8 +32,7 @@ export default function Home() {
                     }>
                         Welcome to Sihir Interview,
                     </h1>
-                    <p className={'text-sm pt-24'
-                    }>
+                    <p className={'text-sm pt-24'}>
                         Firstly, please enter the email you have received the invitation to verify your identity.
                     </p>
                 </div>
