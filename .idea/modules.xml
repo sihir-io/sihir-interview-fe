@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../../backend/core/.idea/core.iml" filepath="$PROJECT_DIR$/../../backend/core/.idea/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sihir-crm/.idea/sihir-crm.iml" filepath="$PROJECT_DIR$/../sihir-crm/.idea/sihir-crm.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sihir-interview.iml" filepath="$PROJECT_DIR$/.idea/sihir-interview.iml" />
     </modules>
   </component>

@@ -2,7 +2,6 @@
 
 import {useEffect, useState} from "react";
 
-
 import {usePathname, useRouter} from 'next/navigation'
 import sihirApiClient from "@/helpers/axios";
 
