@@ -19,6 +19,7 @@ export default function Home() {
     const [error, setError] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
+
     useEffect(() => {
 
     }, [])
@@ -47,6 +48,7 @@ export default function Home() {
                         value={email}/>
                     <button
                         onClick={() => {
+                            if (loading) return
                             setLoading(true)
                             sihirApiClient.put(`/v1/applications/${slug}/verify-email`, {email: email}).then((res) => {
                                 if (res.status !== 200) {
@@ -92,7 +94,6 @@ export default function Home() {
                     Please note that the interview will be recorded and stored on our servers. This recording will be
                     used for the purpose of evaluating your interview performance and will be deleted after 30 days.
                 </p>
-
             </div>
 
             <div
@@ -103,6 +104,8 @@ export default function Home() {
                             if (!slug) {
                                 router.push('/404')
                             }
+                            if (loading) return
+                            if (!loading) setLoading(true)
                             getNewQuestion(slug)
                                 .then(
                                     (res) => {
@@ -118,15 +121,16 @@ export default function Home() {
                                             localStorage.setItem('interview_obj', JSON.stringify(data))
                                             router.push(`/${slug}/interview/${data.id_ref}`)
                                         }
+                                        setLoading(false)
                                     }
                                 ).catch((err) => {
                                 console.log(err)
+                                setLoading(false)
                                 router.push('/error')
                             })
                         }
                     }
-                    className={'bg-blue-500 text-white rounded-md p-2 w-96  mt-4'}
-                >
+                    className={'bg-blue-500 text-white rounded-md p-2 w-96  mt-4' + (loading ? "bg-gray-500 hover:cursor-not-allowed" : '')}>
                     New Question
                 </button>
             </div>

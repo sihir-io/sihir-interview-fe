@@ -17,10 +17,10 @@ export default function Home() {
 
     //Error page
     return (
-        <main className="flex min-h-screen flex-col items-center p-24 bg-white text-black justify-around">
+        <main>
             <div>
                 <h1 className={
-                    'text-4xl font-bold text-center mb-4 text-green-500 '
+                    'text-4xl font-bold text-center mb-4 text-primary-black'
                 }>
                     Congratulations!
                 </h1>

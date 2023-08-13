@@ -1,9 +1,13 @@
 'use client'
 
+import {useEffect} from "react";
+
 export default function Home() {
+//    To directly redirect users to a different webpage use the following:
+    useEffect(() => {
+        window.location.href = 'https://sihir.io'
+    }, [])
 
-
-// If user didnt give permission to use camera and microphone, we will show an error message
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">

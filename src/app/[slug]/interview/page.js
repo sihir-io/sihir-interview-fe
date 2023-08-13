@@ -8,17 +8,8 @@ const get_question_info = async (slug) => {
 }
 
 
-export default async function Home({
-                                       params: {
-                                           slug,
-                                           question_id
-
-                                       },
-
-                                   }) {
-
+export default async function Home({params: {slug, question_id},}) {
     // const question_info = await get_question_info(slug)
-
     return (
         <div className="flex min-h-screen flex-col items-center justify-between p-24 text-white">
             {/*<VideoContainer*/}
