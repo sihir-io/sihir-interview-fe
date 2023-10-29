@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-sihir-io
+  namespace: default
+spec:
+  secretName: wildcard-sihir-io-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: '*.sihir.io'
+  dnsNames:
+  - "*.sihir.io"
+  - "sihir.io"
