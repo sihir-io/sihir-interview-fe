@@ -32,3 +32,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+az acr login --name sihirimage.azurecr.io
+docker build -t sihir_interview_fe:latest .
+
+az acr login --name sihirimage
+
+docker tag sihir_interview_fe:latest sihirimage.azurecr.io/sihir_interview_fe:latest
+
+docker push sihirimage.azurecr.io/sihir_interview_fe:latest
+
+
+Functions in SihirFrontendFunction:
+    DeleteFrontendContainer - [httpTrigger]
+        Invoke url: https://sihirfrontendfunction.azurewebsites.net/api/deletefrontendcontainer
+
+    DeployFrontendContainer - [httpTrigger]
+        Invoke url: https://sihirfrontendfunction.azurewebsites.net/api/deployfrontendcontainer
+
+## Example Usage:
+curl "https://sihirfrontendfunction.azurewebsites.net/api/deployfrontendcontainer?client_name=staging"
+curl "https://sihirfrontendfunction.azurewebsites.net/api/deletefrontendcontainer?client_name=staging"
